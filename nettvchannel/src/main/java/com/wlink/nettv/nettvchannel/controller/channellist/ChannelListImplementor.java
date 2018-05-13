@@ -38,17 +38,17 @@ public class ChannelListImplementor<V extends ChannelListView> extends BasePrese
                 .getChannelList()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<JSONArray>() {
-                               @Override
-                               public void accept(JSONArray jsonArray) throws Exception {
-                                    Log.d("CheckinJSonArray", jsonArray.toString());
-                               }
-                           }, new Consumer<Throwable>() {
-                               @Override
-                               public void accept(Throwable throwable) throws Exception {
+                .subscribe(new Consumer<List<ChannelModelResponse>>() {
+                    @Override
+                    public void accept(List<ChannelModelResponse> channelModelResponses) throws Exception {
+                        Log.d("checkingApiLog", channelModelResponses.size()+" ");
+                        getmMvpView().channelList(channelModelResponses);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
 
-                               }
-                           }
-                ));
+                    }
+                }));
     }
 }

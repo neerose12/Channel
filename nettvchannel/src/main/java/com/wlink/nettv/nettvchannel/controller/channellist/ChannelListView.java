@@ -6,8 +6,9 @@ import com.wlink.nettv.nettvchannel.data.network.model.MovieModelResponse;
 
 import java.util.List;
 
-public interface ChannelListView extends MvpView{
+public interface ChannelListView extends MvpView {
 
-//      void channelList(List<MovieModelResponse.MovieModel> channelModelResponseList);
-      void OnApiError();
+    void OnApiError();
+
+    void channelList(List<ChannelModelResponse> channelModelResponses);
 }

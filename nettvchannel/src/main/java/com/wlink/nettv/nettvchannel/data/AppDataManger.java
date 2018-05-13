@@ -4,16 +4,14 @@ import android.content.Context;
 
 import com.wlink.nettv.nettvchannel.data.network.ApiHelper;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
-import com.wlink.nettv.nettvchannel.data.network.model.MovieModelResponse;
 import com.wlink.nettv.nettvchannel.di.ApplicationContext;
 
-import org.json.JSONArray;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
 import io.reactivex.disposables.Disposable;
 
 @Singleton
@@ -35,7 +33,7 @@ public class AppDataManger implements DataManager {
     }
 
     @Override
-    public Observable<JSONArray> getChannelList() {
+    public Observable<List<ChannelModelResponse>> getChannelList() {
         return mApiHelper.getChannelList();
     }
 

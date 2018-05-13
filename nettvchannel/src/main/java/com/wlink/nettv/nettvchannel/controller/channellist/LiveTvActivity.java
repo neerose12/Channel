@@ -35,10 +35,13 @@ public abstract class LiveTvActivity extends BaseActivity implements ChannelList
         chan.onAttach(this);
         chan.channelList();
     }
-//    @Override
-//    public void channelList(List<MovieModelResponse.MovieModel> channelModelResponseList) {
-//
-//    }
+
+    @Override
+    public void channelList(List<ChannelModelResponse> channelModelResponses) {
+        channelLists(channelModelResponses);
+    }
+
+    protected abstract void channelLists(List<ChannelModelResponse> channelModelResponses);
 
     @Override
     public void OnApiError() {

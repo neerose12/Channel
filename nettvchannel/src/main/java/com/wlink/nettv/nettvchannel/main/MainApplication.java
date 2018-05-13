@@ -2,11 +2,11 @@ package com.wlink.nettv.nettvchannel.main;
 
 import android.app.Application;
 
+import com.androidnetworking.AndroidNetworking;
 import com.wlink.nettv.nettvchannel.data.DataManager;
 import com.wlink.nettv.nettvchannel.di.component.ApplicationComponent;
 import com.wlink.nettv.nettvchannel.di.component.DaggerApplicationComponent;
 import com.wlink.nettv.nettvchannel.di.module.ApplicationModule;
-import com.wlink.nettv.nettvchannel.utils.AppLogger;
 
 import javax.inject.Inject;
 
@@ -24,9 +24,7 @@ public class MainApplication extends Application{
                 applicationModule(new ApplicationModule(this)).build();
 
         applicationComponent.inject(this);
-
-        AppLogger.init();
-
+        AndroidNetworking.enableLogging();
     }
 
 

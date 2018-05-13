@@ -4,16 +4,13 @@ package com.wlink.nettv.nettvchannel.data.network;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.interfaces.AnalyticsListener;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
 
-import org.json.JSONArray;
-
-import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
 import io.reactivex.disposables.Disposable;
 
 public class AppApiHelper implements ApiHelper {
@@ -32,7 +29,7 @@ public class AppApiHelper implements ApiHelper {
         return null;
     }
 
-    public Observable<JSONArray> getChannelList() {
+    public Observable<List<ChannelModelResponse>> getChannelList() {
 
         AndroidNetworking.enableLogging();
         return Rx2AndroidNetworking.get(ApiEndPoints.CHANNEL)
@@ -44,6 +41,6 @@ public class AppApiHelper implements ApiHelper {
 
                     }
                 })
-                .getJSONArrayObservable();
+                .getObjectListObservable(ChannelModelResponse.class);
     }
 }

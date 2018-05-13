@@ -1,23 +1,27 @@
 package com.wlink.nettv.nettvlivetv;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Toast;
 
-import com.wlink.nettv.nettvchannel.base.BaseActivity;
-import com.wlink.nettv.nettvchannel.controller.channellist.ChannelListImplementor;
-import com.wlink.nettv.nettvchannel.controller.channellist.ChannelListPresenter;
-import com.wlink.nettv.nettvchannel.controller.channellist.ChannelListView;
 import com.wlink.nettv.nettvchannel.controller.channellist.LiveTvActivity;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
-import com.wlink.nettv.nettvchannel.data.network.model.MovieModelResponse;
 
+import java.io.IOException;
 import java.util.List;
 
-import javax.inject.Inject;
+import butterknife.BindView;
 
-public class MainActivity extends LiveTvActivity{
+public class MainActivity extends LiveTvActivity {
 
 
+    @BindView(R.id.rv_category_list)
+    RecyclerView categoryList;
 
 
     @Override
@@ -28,6 +32,10 @@ public class MainActivity extends LiveTvActivity{
     @Override
     protected void initAll() {
         getChannelList();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        categoryList.setLayoutManager(linearLayoutManager);
+
+        playChannel();
     }
 
 
@@ -52,14 +60,21 @@ public class MainActivity extends LiveTvActivity{
 
     }
 
-//    @Override
-//    public void channelList(List<MovieModelResponse.MovieModel> channelModelResponseList) {
-//
-//    }
-
+    @Override
+    protected void channelLists(List<ChannelModelResponse> channelModelResponses) {
+        CategoryListAdapter categoryListAdapter = new CategoryListAdapter(channelModelResponses,MainActivity.this);
+        categoryList.setAdapter(categoryListAdapter);
+    }
 
     @Override
     public void OnApiError() {
         super.OnApiError();
     }
+
+
+
+    public void playChannel(){
+    }
+
+
 }
