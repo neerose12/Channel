@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         multiDexEnabled true  // this line will solve this problem
-        applicationId "com.wlink.nettv.nettvlivetv"
+        applicationId "com.wlink.nettv.package"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
