@@ -11,6 +11,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 
@@ -33,8 +34,8 @@ public class AppDataManger implements DataManager {
     }
 
     @Override
-    public Observable<List<ChannelModelResponse>> getChannelList() {
-        return mApiHelper.getChannelList();
+    public Observable<List<ChannelModelResponse>> getChannels() {
+        return mApiHelper.getChannels();
     }
 
 

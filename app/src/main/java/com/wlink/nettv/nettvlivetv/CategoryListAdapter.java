@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.wlink.nettv.nettvchannel.data.network.model.ChannelCategory;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
 
 import java.util.ArrayList;

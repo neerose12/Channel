@@ -19,7 +19,7 @@
 
 package com.androidnetworking.interceptors;
 
-import com.example.logapp.logger.Lg;
+//import com.example.logapp.logger.Lg;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -116,7 +116,7 @@ public class HttpLoggingInterceptor implements Interceptor {
         Logger DEFAULT = new Logger() {
             @Override
             public void log(String message) {
-                Lg.d(message);
+//                Lg.d(message);
                 Platform.get().log(INFO, message, null);
             }
         };
