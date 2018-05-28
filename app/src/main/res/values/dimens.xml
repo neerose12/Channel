@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="recyclerView_item_space">18dp</dimen>
+    <dimen name="recyclerView_item_space1">8dp</dimen>
+    <dimen name="main_margin">16dp</dimen>
+</resources>

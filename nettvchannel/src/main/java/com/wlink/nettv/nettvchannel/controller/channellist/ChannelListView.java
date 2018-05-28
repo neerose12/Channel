@@ -9,5 +9,5 @@ public interface ChannelListView extends MvpView {
 
     void OnApiError();
 
-    void channelList(List<ChannelModelResponse> channelModelResponses);
+    void channelList(ChannelModelResponse channelModelResponses);
 }

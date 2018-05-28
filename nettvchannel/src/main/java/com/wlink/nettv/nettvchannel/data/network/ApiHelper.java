@@ -10,6 +10,6 @@ import io.reactivex.disposables.Disposable;
 
 public interface  ApiHelper {
     Disposable doServerLoginApiCall();
-    Observable<List<ChannelModelResponse>> getChannels();
+    Observable<ChannelModelResponse> getChannels();
 
 }

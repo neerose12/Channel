@@ -12,7 +12,7 @@ public class ChannelModel {
     @SerializedName("channel_number")
     int channelNumber;
     @SerializedName("enabled")
-    boolean enabled;
+    int enabled;
     @SerializedName("price")
     double price;
     @SerializedName("language_id")
@@ -21,7 +21,20 @@ public class ChannelModel {
     String country;
     @SerializedName("platforms")
     int platforms;
+    @SerializedName("path")
+    String path;
 
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 
     public int getId() {
         return id;
@@ -55,11 +68,11 @@ public class ChannelModel {
         this.channelNumber = channelNumber;
     }
 
-    public boolean isEnabled() {
+    public int isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(int enabled) {
         this.enabled = enabled;
     }
 
@@ -93,6 +106,15 @@ public class ChannelModel {
 
     public void setPlatforms(int platforms) {
         this.platforms = platforms;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof ChannelModel){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
 

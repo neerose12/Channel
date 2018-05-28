@@ -28,21 +28,19 @@ public class ChannelListImplementor<V extends ChannelListView> extends BasePrese
 
     @Override
     public void channelList() {
-        Log.d("checkingApiLog", "look i am here");
         getCompositeDisposable().add(getDataManager()
                 .getChannels()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<ChannelModelResponse>>() {
+                .subscribe(new Consumer<ChannelModelResponse>() {
                     @Override
-                    public void accept(List<ChannelModelResponse> channelModelResponses) throws Exception {
-                        Log.d("checkingApiLog", channelModelResponses.size()+" ");
+                    public void accept(ChannelModelResponse channelModelResponses) throws Exception {
                         getmMvpView().channelList(channelModelResponses);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-
+                        throwable.printStackTrace();
                     }
                 }));
     }

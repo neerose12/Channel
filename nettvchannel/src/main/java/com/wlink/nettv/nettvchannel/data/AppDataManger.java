@@ -34,7 +34,7 @@ public class AppDataManger implements DataManager {
     }
 
     @Override
-    public Observable<List<ChannelModelResponse>> getChannels() {
+    public Observable<ChannelModelResponse> getChannels() {
         return mApiHelper.getChannels();
     }
 

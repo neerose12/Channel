@@ -32,11 +32,8 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Observable<List<ChannelModelResponse>> getChannels() {
-        String link = "https://api.nettv.com.np/channels.php";
-        Log.d("CheckingUrl",link);
-        AndroidNetworking.enableLogging();
-        return Rx2AndroidNetworking.get(link)
+    public Observable<ChannelModelResponse> getChannels() {
+        return Rx2AndroidNetworking.get(ApiEndPoints.CHANNEL)
                 .addHeaders(mApiHeader.getProtectedApiHeader())
                 .build()
                 .setAnalyticsListener(new AnalyticsListener() {
@@ -45,23 +42,9 @@ public class AppApiHelper implements ApiHelper {
 
                     }
                 })
-                .getObjectListObservable(ChannelModelResponse.class);
+                .getObjectObservable(ChannelModelResponse.class);
     }
 
 
-    public Observable<List<ChannelModelResponse>> getChannelList() {
-        String link = "https://api.nettv.com.np/channels.php";
-        Log.d("CheckingUrl",link);
-        AndroidNetworking.enableLogging();
-        return Rx2AndroidNetworking.get(link)
-                .addHeaders(mApiHeader.getProtectedApiHeader())
-                .build()
-                .setAnalyticsListener(new AnalyticsListener() {
-                    @Override
-                    public void onReceived(long timeTakenInMillis, long bytesSent, long bytesReceived, boolean isFromCache) {
 
-                    }
-                })
-                .getObjectListObservable(ChannelModelResponse.class);
-    }
 }

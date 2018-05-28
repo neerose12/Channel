@@ -1,5 +1,6 @@
 package com.wlink.nettv.nettvchannel.base;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +9,11 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 
-import com.wlink.nettv.nettvchannel.di.component.ActivityComponent;
-import com.wlink.nettv.nettvchannel.di.component.DaggerActivityComponent;
-import com.wlink.nettv.nettvchannel.di.module.AcitivityModule;
-import com.wlink.nettv.nettvchannel.main.MainApplication;
+import com.wlink.nettv.nettvchannel.di.component.DaggerNettvActivityComponent;
+import com.wlink.nettv.nettvchannel.di.component.NettvActivityComponent;
+import com.wlink.nettv.nettvchannel.di.module.NettvAcitivityModule;
+import com.wlink.nettv.nettvchannel.main.NettvApp;
+import com.wlink.nettv.nettvchannel.utils.CommonUtils;
 import com.wlink.nettv.nettvchannel.utils.NetworkUtils;
 
 import butterknife.ButterKnife;
@@ -19,24 +21,25 @@ import butterknife.Unbinder;
 
 public abstract class BaseActivity extends AppCompatActivity implements MvpView {
 
-    ActivityComponent activityComponent;
+    NettvActivityComponent nettvActivityComponent;
     private Unbinder mUnBinder;
+    private ProgressDialog mProgressDialog;
 
-    public ActivityComponent getActivityComponent() {
-        return activityComponent;
+    public NettvActivityComponent getNettvActivityComponent() {
+        return nettvActivityComponent;
     }
 
-    public void setActivityComponent(ActivityComponent activityComponent) {
-        this.activityComponent = activityComponent;
+    public void setNettvActivityComponent(NettvActivityComponent nettvActivityComponent) {
+        this.nettvActivityComponent = nettvActivityComponent;
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        activityComponent = DaggerActivityComponent.builder()
-                .acitivityModule(new AcitivityModule(this))
-                .applicationComponent(((MainApplication) getApplication()).getApplicationComponent())
+        nettvActivityComponent = DaggerNettvActivityComponent.builder()
+                .nettvAcitivityModule(new NettvAcitivityModule(this))
+                .nettvApplicationComponent(((NettvApp) getApplication()).getNettvApplicationComponent())
                 .build();
         setUnBinder(ButterKnife.bind(this));
         init();
@@ -57,16 +60,25 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
     }
 
+
+
     @Override
     public void showLoading() {
-
+        hideLoading();
+        mProgressDialog = CommonUtils.showLoadingDialog(this);
     }
 
     @Override
     public void hideLoading() {
-
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.cancel();
+        }
     }
 
+    @Override
+    public boolean isShowing() {
+        return mProgressDialog.isShowing();
+    }
 
     @Override
     public void hideKeyboard() {
@@ -76,5 +88,12 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
                     getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    public void onFragmentAttached() {
+    }
+
+
+    public void onFragmentDetached(String tag) {
     }
 }
