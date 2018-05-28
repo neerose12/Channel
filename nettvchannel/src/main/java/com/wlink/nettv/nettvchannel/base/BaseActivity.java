@@ -1,5 +1,6 @@
 package com.wlink.nettv.nettvchannel.base;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ import com.wlink.nettv.nettvchannel.utils.NetworkUtils;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseActivity extends AppCompatActivity implements MvpView {
+public abstract class BaseActivity extends Activity implements MvpView {
 
     NettvActivityComponent nettvActivityComponent;
     private Unbinder mUnBinder;

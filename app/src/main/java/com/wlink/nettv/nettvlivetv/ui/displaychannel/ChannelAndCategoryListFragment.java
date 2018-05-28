@@ -65,7 +65,7 @@ public class ChannelAndCategoryListFragment extends BaseFragment implements Cate
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        main = (Main)getActivity();
+//        main = (Main)getActivity();
         try{
             this.fragmentCallback = (FragmentCallback)context;
         }catch (NettvClassCastException e){

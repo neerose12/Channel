@@ -71,7 +71,7 @@ public class Main extends LiveTv implements LiveTvChannel,
     }
 
     private void openFragment() {
-        getSupportFragmentManager().beginTransaction()
+        getFragmentManager().beginTransaction()
                 .replace(R.id.fl_main_class, new ChannelAndCategoryListFragment()).commit();
     }
 

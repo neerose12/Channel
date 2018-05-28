@@ -13,7 +13,7 @@ import com.wlink.nettv.nettvlivetv.di.module.ApplicationModule;
 
 import javax.inject.Inject;
 
-public class MainApplication extends Application {
+public class MainApplication extends NettvApp {
 
 
     @Inject

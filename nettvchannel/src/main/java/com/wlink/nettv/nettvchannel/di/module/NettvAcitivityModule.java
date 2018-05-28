@@ -1,6 +1,7 @@
 package com.wlink.nettv.nettvchannel.di.module;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
@@ -18,9 +19,9 @@ import io.reactivex.disposables.CompositeDisposable;
 @Module
 public class NettvAcitivityModule {
 
-    AppCompatActivity appCompatActivity;
+    Activity appCompatActivity;
 
-    public NettvAcitivityModule(AppCompatActivity appCompatActivity) {
+    public NettvAcitivityModule(Activity appCompatActivity) {
         this.appCompatActivity = appCompatActivity;
     }
 
