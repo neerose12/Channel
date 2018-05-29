@@ -10,6 +10,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 
 import io.reactivex.Observable;
 
-public class ChannelModelResponse {
+public class ChannelModelResponse implements Serializable{
 
 
     @SerializedName("categories")

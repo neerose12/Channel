@@ -2,7 +2,9 @@ package com.wlink.nettv.nettvchannel.data.network.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ChannelCategoryMap {
+import java.io.Serializable;
+
+public class ChannelCategoryMap implements Serializable {
 
     @SerializedName("channel_id")
     int channelId;
