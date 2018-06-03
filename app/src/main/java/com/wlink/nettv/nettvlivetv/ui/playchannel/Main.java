@@ -2,34 +2,21 @@ package com.wlink.nettv.nettvlivetv.ui.playchannel;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.logapp.logger.Lg;
-import com.example.logapp.logger.StartLogging;
 import com.wlink.nettv.nettvchannel.controller.channellist.LiveTv;
 import com.wlink.nettv.nettvchannel.controller.channellist.LiveTvChannel;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelCategory;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModel;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
-import com.wlink.nettv.nettvlivetv.base.BaseActivity;
-import com.wlink.nettv.nettvlivetv.ui.displaychannel.CategoryListAdapter;
 import com.wlink.nettv.nettvlivetv.R;
 import com.wlink.nettv.nettvlivetv.ui.displaychannel.ChannelAndCategoryListFragment;
-import com.wlink.nettv.nettvlivetv.util.KeyEvents;
 import com.wlink.nettv.nettvlivetv.util.KeyEventsInterface;
-import com.wlink.nettv.nettvlivetv.util.exception.MediaPlayerException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -107,7 +94,7 @@ public class Main extends LiveTv implements LiveTvChannel,
         }
 
         Lg.d("CheckingHowFast");
-        String url = channelModels.get(position).getPath();
+        String url = channelModels.get(position).getLogo();
         mediaPlayer.reset();
         try {
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);

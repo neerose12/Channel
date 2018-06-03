@@ -23,19 +23,19 @@ public class ChannelModel implements Serializable {
     String country;
     @SerializedName("platforms")
     int platforms;
-    @SerializedName("path")
-    String path;
+    @SerializedName("logo")
+    String logo;
 
     public int getEnabled() {
         return enabled;
     }
 
-    public String getPath() {
-        return path;
+    public String getLogo() {
+        return logo;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 
     public int getId() {
