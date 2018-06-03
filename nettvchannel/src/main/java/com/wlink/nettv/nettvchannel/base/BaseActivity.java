@@ -20,7 +20,7 @@ import com.wlink.nettv.nettvchannel.utils.NetworkUtils;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseActivity extends AppCompatActivity implements MvpView {
+public abstract class BaseActivity extends Activity implements MvpView {
 
     NettvActivityComponent nettvActivityComponent;
     private Unbinder mUnBinder;
