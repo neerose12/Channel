@@ -24,6 +24,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.provider.Settings;
 import android.util.Log;
 
+import com.github.ybq.android.spinkit.style.ChasingDots;
 import com.nettv.R;
 
 import java.io.IOException;
@@ -48,14 +49,15 @@ public final class CommonUtils {
 
     public static ProgressDialog showLoadingDialog(Context context) {
         ProgressDialog progressDialog = new ProgressDialog(context);
+        ChasingDots doubleBounce = new ChasingDots();
         progressDialog.show();
         Log.d("CheckingStatus", "here");
         if (progressDialog.getWindow() != null) {
             progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         progressDialog.setContentView(R.layout.progress_dialog);
-        progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
+        progressDialog.setIndeterminateDrawable(doubleBounce);
         progressDialog.setCanceledOnTouchOutside(false);
         return progressDialog;
     }
