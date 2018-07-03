@@ -13,6 +13,8 @@ public class ChannelCategory extends ChannelModelResponse{
     int id;
     @SerializedName("category")
     String category;
+    @SerializedName("logo")
+    String logo;
     List<ChannelModel> channelModels;
 
     public int getId() {
@@ -25,6 +27,10 @@ public class ChannelCategory extends ChannelModelResponse{
 
     public List<ChannelModel> getChannelModels() {
         return channelModels;
+    }
+
+    public String getLogo() {
+        return logo;
     }
 
     @Override
