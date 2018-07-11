@@ -41,12 +41,11 @@ public abstract class LiveTv extends BaseActivity implements ChannelListView,Liv
     @Override
     public void channelList(ChannelModelResponse channelModelResponses) {
         channelLists(channelModelResponses);
-
     }
 
 
     @Override
-    public void OnApiError() {
+    public void OnApiError(String msg) {
 
     }
 
@@ -70,4 +69,5 @@ public abstract class LiveTv extends BaseActivity implements ChannelListView,Liv
     public void showMessage(int resId) {
 
     }
+
 }

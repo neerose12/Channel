@@ -20,6 +20,9 @@ package com.androidnetworking.error;
 import com.androidnetworking.common.ANConstants;
 import com.androidnetworking.utils.ParseUtil;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import okhttp3.Response;
 
 /**
@@ -35,6 +38,18 @@ public class ANError extends Exception {
     private String errorDetail;
 
     private Response response;
+
+    private String errrMessage;
+
+
+    public String getErrrMessage() {
+        try {
+            return new JSONObject(errorBody).getString("message");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "UnExcepted Error";
+        }
+    }
 
     public ANError() {
     }

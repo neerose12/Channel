@@ -49,14 +49,14 @@ public class ChannelAndCategoryListFragment extends BaseFragment implements Cate
         rvCategoryList.setAdapter(categoryListAdapter);
 
 
-        categoryListAdapter.addItems(main.channelCategories);
+//        categoryListAdapter.addItems(main.channelCategories);
 
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getActivity());
         rvChannelList.setLayoutManager(linearLayoutManager1);
 
-        channelListAdapter = new ChannelListAdapter(main.channelModels);
-        channelListAdapter.setChannelCallback(this);
-        rvChannelList.setAdapter(channelListAdapter);
+//        channelListAdapter = new ChannelListAdapter(main.channelModels);
+//        channelListAdapter.setChannelCallback(this);
+//        rvChannelList.setAdapter(channelListAdapter);
 
     }
 

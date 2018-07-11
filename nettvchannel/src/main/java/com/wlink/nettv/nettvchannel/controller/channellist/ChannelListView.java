@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ChannelListView extends MvpView {
 
-    void OnApiError();
+    void OnApiError(String msg);
 
     void channelList(ChannelModelResponse channelModelResponses);
 }

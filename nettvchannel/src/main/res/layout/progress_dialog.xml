@@ -16,16 +16,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:background="@color/white">
+    android:layout_gravity="center">
 
-    <com.github.ybq.android.spinkit.SpinKitView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/spin_kit"
-        style="@style/SpinKitView.ChasingDots"
+    <ProgressBar
+        android:id="@+id/pb_loading"
         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="#000000"
-        android:layout_gravity="center"
-        app:SpinKit_Color="@color/white" />
+        android:layout_height="100dp" />
+
 </RelativeLayout>

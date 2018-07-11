@@ -2,6 +2,7 @@ package com.wlink.nettv.nettvchannel.controller.channellist;
 
 import android.util.Log;
 
+import com.androidnetworking.error.ANError;
 import com.wlink.nettv.nettvchannel.base.BasePresenter;
 import com.wlink.nettv.nettvchannel.data.DataManager;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
@@ -34,13 +35,17 @@ public class ChannelListImplementor<V extends ChannelListView> extends BasePrese
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<ChannelModelResponse>() {
                     @Override
-                    public void accept(ChannelModelResponse channelModelResponses) throws Exception {
+                    public void accept(ChannelModelResponse channelModelResponses) {
                         getmMvpView().channelList(channelModelResponses);
+
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         throwable.printStackTrace();
+                        ANError anError = (ANError)throwable;
+                        Log.d("CheckingError",anError.getErrrMessage());
+                        getmMvpView().OnApiError(anError.getErrrMessage());
                     }
                 }));
     }
