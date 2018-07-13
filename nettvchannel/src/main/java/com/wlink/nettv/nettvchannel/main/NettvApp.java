@@ -4,6 +4,7 @@ import android.app.Application;
 import android.support.multidex.MultiDexApplication;
 
 import com.androidnetworking.AndroidNetworking;
+import com.parse.Parse;
 import com.wlink.nettv.nettvchannel.data.DataManager;
 import com.wlink.nettv.nettvchannel.di.component.NettvApplicationComponent;
 import com.wlink.nettv.nettvchannel.di.component.DaggerNettvApplicationComponent;
@@ -25,6 +26,7 @@ public class NettvApp extends MultiDexApplication{
     @Override
     public void onCreate() {
         super.onCreate();
+
         nettvApplicationComponent = DaggerNettvApplicationComponent.builder().
                 nettvApplicationModule(new NettvApplicationModule(this)).build();
 
@@ -35,6 +37,13 @@ public class NettvApp extends MultiDexApplication{
                 .readTimeout(120, TimeUnit.SECONDS)
                 . writeTimeout(120, TimeUnit.SECONDS)
                 .build();
+
+        Parse.initialize(new Parse.Configuration.Builder(this)
+                .applicationId("oHp9Gc7eiOr5IlABf1gD7u8DfT5WRSIwJILZMae8")
+                .clientKey("Dj0HogzdGSUhxwaNXV1SIbZdXraG6E9DzqP0k4ib")
+                .server("https://parseapi.back4app.com/")
+                .build()
+        );
 
         AndroidNetworking.initialize(getApplicationContext(),okHttpClient);
     }
