@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 
 import okhttp3.OkHttpClient;
+import tgio.parselivequery.LiveQueryClient;
 
 public class NettvApp extends MultiDexApplication{
 
@@ -44,7 +45,8 @@ public class NettvApp extends MultiDexApplication{
                 .server("https://parseapi.back4app.com/")
                 .build()
         );
-
+        LiveQueryClient.init("wss://" + "livetv.back4app.com/", "oHp9Gc7eiOr5IlABf1gD7u8DfT5WRSIwJILZMae8", true); // Example: 'wss://livequerytutorial.back4app.io'
+        LiveQueryClient.connect();
         AndroidNetworking.initialize(getApplicationContext(),okHttpClient);
     }
 
