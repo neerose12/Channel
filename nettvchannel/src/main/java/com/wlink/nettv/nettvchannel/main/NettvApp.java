@@ -45,7 +45,7 @@ public class NettvApp extends MultiDexApplication{
                 .server("https://parseapi.back4app.com/")
                 .build()
         );
-        LiveQueryClient.init("wss://" + "livetv.back4app.com/", "oHp9Gc7eiOr5IlABf1gD7u8DfT5WRSIwJILZMae8", true); // Example: 'wss://livequerytutorial.back4app.io'
+        LiveQueryClient.init("wss://" + "livetv.back4app.io/", "oHp9Gc7eiOr5IlABf1gD7u8DfT5WRSIwJILZMae8", true); // Example: 'wss://livequerytutorial.back4app.io'
         LiveQueryClient.connect();
         AndroidNetworking.initialize(getApplicationContext(),okHttpClient);
     }
