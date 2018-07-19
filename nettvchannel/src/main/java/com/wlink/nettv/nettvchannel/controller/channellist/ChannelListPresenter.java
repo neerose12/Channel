@@ -5,4 +5,6 @@ import com.wlink.nettv.nettvchannel.base.MvpPresenter;
 public interface ChannelListPresenter<V extends ChannelListView> extends MvpPresenter<V> {
 
     void channelList();
+
+    void getNimbleToken();
 }

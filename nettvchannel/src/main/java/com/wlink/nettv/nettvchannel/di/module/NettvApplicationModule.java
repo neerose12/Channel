@@ -59,6 +59,6 @@ public class NettvApplicationModule {
     @Provides
     @Singleton
     ApiHeader.ProtectedApiHeader provideProtectedApiHelper(@ApiInfo String mApiKey){
-        return new ApiHeader.ProtectedApiHeader("",null,"");
+        return new ApiHeader.ProtectedApiHeader(mApiKey);
     }
 }

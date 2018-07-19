@@ -12,6 +12,7 @@ import com.wlink.nettv.nettvchannel.controller.channellist.LiveTvChannel;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelCategory;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModel;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
+import com.wlink.nettv.nettvchannel.data.network.model.NimbleToken;
 import com.wlink.nettv.nettvlivetv.R;
 import com.wlink.nettv.nettvlivetv.ui.displaychannel.ChannelAndCategoryListFragment;
 import com.wlink.nettv.nettvlivetv.util.KeyEventsInterface;
@@ -55,6 +56,11 @@ public class Main extends LiveTv implements LiveTvChannel,
         getChannelList(0);
         playChannel(0);
         openFragment();
+    }
+
+    @Override
+    public void nimbleToken(NimbleToken nimbleToken) {
+
     }
 
     private void openFragment() {

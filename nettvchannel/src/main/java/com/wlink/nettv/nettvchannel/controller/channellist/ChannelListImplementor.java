@@ -6,6 +6,7 @@ import com.androidnetworking.error.ANError;
 import com.wlink.nettv.nettvchannel.base.BasePresenter;
 import com.wlink.nettv.nettvchannel.data.DataManager;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
+import com.wlink.nettv.nettvchannel.data.network.model.NimbleToken;
 import com.wlink.nettv.nettvchannel.utils.rx.SchedulerProvider;
 
 import java.util.List;
@@ -37,6 +38,29 @@ public class ChannelListImplementor<V extends ChannelListView> extends BasePrese
                     @Override
                     public void accept(ChannelModelResponse channelModelResponses) {
                         getmMvpView().channelList(channelModelResponses);
+
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        throwable.printStackTrace();
+                        ANError anError = (ANError)throwable;
+                        Log.d("CheckingError",anError.getErrrMessage());
+                        getmMvpView().OnApiError(anError.getErrrMessage());
+                    }
+                }));
+    }
+
+    @Override
+    public void getNimbleToken() {
+        getCompositeDisposable().add(getDataManager()
+                .getNimbleToken()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<NimbleToken>() {
+                    @Override
+                    public void accept(NimbleToken nimbleToken) {
+                        getmMvpView().nimbleTokenValue(nimbleToken);
 
                     }
                 }, new Consumer<Throwable>() {

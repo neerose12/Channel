@@ -1,7 +1,9 @@
 package com.wlink.nettv.nettvchannel.controller.channellist;
 
 import com.wlink.nettv.nettvchannel.base.BaseActivity;
+import com.wlink.nettv.nettvchannel.data.network.ApiHeader;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
+import com.wlink.nettv.nettvchannel.data.network.model.NimbleToken;
 
 import javax.inject.Inject;
 
@@ -31,15 +33,27 @@ public abstract class LiveTv extends BaseActivity implements ChannelListView,Liv
     protected abstract int getResLayout();
     protected abstract void initAll();
     public abstract void channelLists(ChannelModelResponse channelModelResponses);
+    public abstract void nimbleToken(NimbleToken nimbleToken);
 
     public void getChannelList(){
         getNettvActivityComponent().inject(this);
         chan.onAttach(this);
+        new ApiHeader.ProtectedApiHeader("accessTokenPathau");
         chan.channelList();
+    }
+
+    public void refreshToken(){
+        chan.getNimbleToken();
+    }
+
+    @Override
+    public void nimbleTokenValue(NimbleToken nimbleToken) {
+        nimbleToken(nimbleToken);
     }
 
     @Override
     public void channelList(ChannelModelResponse channelModelResponses) {
+        chan.getNimbleToken();
         channelLists(channelModelResponses);
     }
 

@@ -6,6 +6,7 @@ import android.support.multidex.MultiDexApplication;
 import com.androidnetworking.AndroidNetworking;
 import com.parse.Parse;
 import com.wlink.nettv.nettvchannel.data.DataManager;
+import com.wlink.nettv.nettvchannel.data.network.ApiHelper;
 import com.wlink.nettv.nettvchannel.di.component.NettvApplicationComponent;
 import com.wlink.nettv.nettvchannel.di.component.DaggerNettvApplicationComponent;
 import com.wlink.nettv.nettvchannel.di.module.NettvApplicationModule;
@@ -32,7 +33,6 @@ public class NettvApp extends MultiDexApplication{
                 nettvApplicationModule(new NettvApplicationModule(this)).build();
 
         nettvApplicationComponent.inject(this);
-
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
                 .connectTimeout(120, TimeUnit.SECONDS)
                 .readTimeout(120, TimeUnit.SECONDS)
@@ -45,9 +45,9 @@ public class NettvApp extends MultiDexApplication{
                 .server("https://parseapi.back4app.com/")
                 .build()
         );
-        LiveQueryClient.init("wss://" + "livetv.back4app.io/", "oHp9Gc7eiOr5IlABf1gD7u8DfT5WRSIwJILZMae8", true); // Example: 'wss://livequerytutorial.back4app.io'
-        LiveQueryClient.connect();
+
         AndroidNetworking.initialize(getApplicationContext(),okHttpClient);
+
     }
 
     public static void init(){

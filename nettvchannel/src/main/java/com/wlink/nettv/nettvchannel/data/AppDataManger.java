@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.wlink.nettv.nettvchannel.data.network.ApiHelper;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
+import com.wlink.nettv.nettvchannel.data.network.model.NimbleToken;
 import com.wlink.nettv.nettvchannel.di.ApplicationContext;
 
 import java.util.List;
@@ -36,6 +37,11 @@ public class AppDataManger implements DataManager {
     @Override
     public Observable<ChannelModelResponse> getChannels() {
         return mApiHelper.getChannels();
+    }
+
+    @Override
+    public Observable<NimbleToken> getNimbleToken() {
+        return mApiHelper.getNimbleToken();
     }
 
 
