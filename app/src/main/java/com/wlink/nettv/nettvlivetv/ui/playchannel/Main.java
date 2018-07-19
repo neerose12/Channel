@@ -81,7 +81,6 @@ public class Main extends LiveTv implements LiveTvChannel,
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-
     }
 
 
