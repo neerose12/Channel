@@ -16,7 +16,6 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 
 import okhttp3.OkHttpClient;
-import tgio.parselivequery.LiveQueryClient;
 
 public class NettvApp extends MultiDexApplication{
 
