@@ -1,5 +1,7 @@
 package com.wlink.nettv.nettvchannel.data.network;
 
+import android.util.Log;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.wlink.nettv.nettvchannel.di.ApiInfo;
@@ -28,7 +30,7 @@ public class ApiHeader {
     public static final class PublicApiHeader {
 
         @Expose
-        @SerializedName("api_key")
+        @SerializedName("Authorization")
         private String mApiKey;
 
         @Inject
@@ -48,10 +50,11 @@ public class ApiHeader {
     public static final class ProtectedApiHeader {
 
         @Expose
-        @SerializedName("access_token")
+        @SerializedName("Authorization")
         private String mAccessToken;
 
         public ProtectedApiHeader(String mAccessToken) {
+            Log.d("CallChjecking",mAccessToken);
             this.mAccessToken = mAccessToken;
         }
 

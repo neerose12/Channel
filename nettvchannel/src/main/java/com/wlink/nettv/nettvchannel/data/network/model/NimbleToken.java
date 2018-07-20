@@ -6,6 +6,10 @@ import java.io.Serializable;
 
 public class NimbleToken implements Serializable {
 
-    @SerializedName("wmsAuthSign")
+    @SerializedName("wmsauthsign")
     String nimbleToken;
+
+    public String getNimbleToken() {
+        return nimbleToken;
+    }
 }

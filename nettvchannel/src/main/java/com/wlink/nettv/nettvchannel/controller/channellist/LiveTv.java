@@ -1,5 +1,7 @@
 package com.wlink.nettv.nettvchannel.controller.channellist;
 
+import android.util.Log;
+
 import com.wlink.nettv.nettvchannel.base.BaseActivity;
 import com.wlink.nettv.nettvchannel.data.network.ApiHeader;
 import com.wlink.nettv.nettvchannel.data.network.model.ChannelModelResponse;
@@ -38,7 +40,8 @@ public abstract class LiveTv extends BaseActivity implements ChannelListView,Liv
     public void getChannelList(){
         getNettvActivityComponent().inject(this);
         chan.onAttach(this);
-        new ApiHeader.ProtectedApiHeader("accessTokenPathau");
+        new ApiHeader.ProtectedApiHeader("");
+        chan.getNimbleToken();
         chan.channelList();
     }
 
@@ -49,6 +52,7 @@ public abstract class LiveTv extends BaseActivity implements ChannelListView,Liv
     @Override
     public void nimbleTokenValue(NimbleToken nimbleToken) {
         nimbleToken(nimbleToken);
+        Log.d("CheckingNimblerToken",nimbleToken.getNimbleToken());
     }
 
     @Override

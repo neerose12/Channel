@@ -36,7 +36,7 @@ public class AppApiHelper implements ApiHelper {
     public Observable<ChannelModelResponse> getChannels() {
         Log.d("CHeck9ingAiHerader", mApiHeader.getProtectedApiHeader().getAccessToken());
         return Rx2AndroidNetworking.get(ApiEndPoints.CHANNEL)
-                .addHeaders(mApiHeader.getProtectedApiHeader())
+                .addHeaders("Authorization",mApiHeader.getProtectedApiHeader().getAccessToken())
                 .build()
                 .setAnalyticsListener(new AnalyticsListener() {
                     @Override
@@ -49,8 +49,9 @@ public class AppApiHelper implements ApiHelper {
 
     @Override
     public Observable<NimbleToken> getNimbleToken() {
+        Log.d("ChckingToken",mApiHeader.getPublicApiHeader().getApiKey());
         return Rx2AndroidNetworking.get(ApiEndPoints.NIMBLE)
-                .addHeaders(mApiHeader.getProtectedApiHeader())
+                .addHeaders("Authorization",mApiHeader.getProtectedApiHeader().getAccessToken())
                 .build()
                 .setAnalyticsListener(new AnalyticsListener() {
                     @Override

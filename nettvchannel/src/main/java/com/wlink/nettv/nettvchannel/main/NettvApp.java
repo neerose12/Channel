@@ -17,6 +17,7 @@ import javax.inject.Inject;
 
 import okhttp3.OkHttpClient;
 
+
 public class NettvApp extends MultiDexApplication{
 
     @Inject
@@ -32,6 +33,7 @@ public class NettvApp extends MultiDexApplication{
                 nettvApplicationModule(new NettvApplicationModule(this)).build();
 
         nettvApplicationComponent.inject(this);
+
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
                 .connectTimeout(120, TimeUnit.SECONDS)
                 .readTimeout(120, TimeUnit.SECONDS)
@@ -46,7 +48,7 @@ public class NettvApp extends MultiDexApplication{
         );
 
         AndroidNetworking.initialize(getApplicationContext(),okHttpClient);
-
+        AndroidNetworking.enableLogging();
     }
 
     public static void init(){
