@@ -28,7 +28,6 @@ public class MainApplication extends NettvApp {
         super.onCreate();
 
         StartLogging.init(this);
-        LogFile.init(this);
 //        AndroidNetworking.enableLogging();
 
         applicationComponent = DaggerApplicationComponent.builder().applicationModule(
