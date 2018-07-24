@@ -5,6 +5,7 @@ import android.support.multidex.MultiDexApplication;
 
 import com.androidnetworking.AndroidNetworking;
 import com.parse.Parse;
+import com.parse.ParseObject;
 import com.wlink.nettv.nettvchannel.data.DataManager;
 import com.wlink.nettv.nettvchannel.data.network.ApiHelper;
 import com.wlink.nettv.nettvchannel.di.component.NettvApplicationComponent;
@@ -39,6 +40,7 @@ public class NettvApp extends MultiDexApplication{
                 .readTimeout(120, TimeUnit.SECONDS)
                 . writeTimeout(120, TimeUnit.SECONDS)
                 .build();
+        ParseObject.registerSubclass(ChannelIds.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("oHp9Gc7eiOr5IlABf1gD7u8DfT5WRSIwJILZMae8")
