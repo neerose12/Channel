@@ -47,7 +47,6 @@ public class NettvApp extends MultiDexApplication{
                 .server("https://parseapi.back4app.com/")
                 .build()
         );
-        ParseObject.registerSubclass(ChannelIds.class);
 
         AndroidNetworking.initialize(getApplicationContext(),okHttpClient);
         AndroidNetworking.enableLogging();
