@@ -40,7 +40,6 @@ public class NettvApp extends MultiDexApplication{
                 .readTimeout(120, TimeUnit.SECONDS)
                 . writeTimeout(120, TimeUnit.SECONDS)
                 .build();
-        ParseObject.registerSubclass(ChannelIds.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("oHp9Gc7eiOr5IlABf1gD7u8DfT5WRSIwJILZMae8")
@@ -48,6 +47,7 @@ public class NettvApp extends MultiDexApplication{
                 .server("https://parseapi.back4app.com/")
                 .build()
         );
+        ParseObject.registerSubclass(ChannelIds.class);
 
         AndroidNetworking.initialize(getApplicationContext(),okHttpClient);
         AndroidNetworking.enableLogging();
