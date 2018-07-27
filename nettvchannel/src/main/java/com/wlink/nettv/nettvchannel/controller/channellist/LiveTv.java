@@ -42,7 +42,6 @@ public abstract class LiveTv extends BaseActivity implements ChannelListView,Liv
     public void getChannelList(){
         getNettvActivityComponent().inject(this);
         chan.onAttach(this);
-        new ApiHeader.ProtectedApiHeader("");
         chan.channelList();
     }
 
