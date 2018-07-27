@@ -89,4 +89,14 @@ public class ChannelModelResponse implements Serializable{
         return channelModel;
     }
 
+    public ChannelModel getChannelById(int channelId){
+        ChannelModel channelModel = null;
+        for(ChannelModel channelModel1: channelModels){
+            if(channelModel1.getId() == channelId){
+                channelModel = channelModel1;
+            }
+        }
+        return channelModel;
+    }
+
 }
