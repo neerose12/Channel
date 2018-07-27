@@ -15,6 +15,8 @@ public abstract class LiveTv extends BaseActivity implements ChannelListView,Liv
     ChannelListPresenter<ChannelListView> chan;
 
     LiveTvChannel liveTvChannel;
+    boolean firstAppOpen = true;
+    ChannelModelResponse channelModelResponses;
 
     @Override
     protected int getLayout() {
@@ -50,14 +52,17 @@ public abstract class LiveTv extends BaseActivity implements ChannelListView,Liv
 
     @Override
     public void nimbleTokenValue(NimbleToken nimbleToken) {
+        if(firstAppOpen){
+            firstAppOpen  = false;
+            channelLists(channelModelResponses);
+        }
         nimbleToken(nimbleToken);
-        Log.d("CheckingNimblerToken",nimbleToken.getNimbleToken());
     }
 
     @Override
     public void channelList(ChannelModelResponse channelModelResponses) {
+        this.channelModelResponses = channelModelResponses;
         chan.getNimbleToken();
-        channelLists(channelModelResponses);
     }
 
 
