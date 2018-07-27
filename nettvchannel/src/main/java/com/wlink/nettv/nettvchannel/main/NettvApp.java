@@ -43,6 +43,7 @@ public class NettvApp extends MultiDexApplication {
             Log.d("CHeckingAcessToken", accessToken);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
+            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
         }
         nettvApplicationComponent = DaggerNettvApplicationComponent.builder().
                 nettvApplicationModule(new NettvApplicationModule(this)).build();
