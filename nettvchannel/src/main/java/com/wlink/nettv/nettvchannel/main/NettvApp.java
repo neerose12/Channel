@@ -1,7 +1,12 @@
 package com.wlink.nettv.nettvchannel.main;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.support.multidex.MultiDexApplication;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.parse.Parse;
@@ -19,17 +24,26 @@ import javax.inject.Inject;
 import okhttp3.OkHttpClient;
 
 
-public class NettvApp extends MultiDexApplication{
+public class NettvApp extends MultiDexApplication {
 
     @Inject
     DataManager mDataManager;
-
+    Context mContext;
     private NettvApplicationComponent nettvApplicationComponent;
-
+    public static String accessToken;
     @Override
     public void onCreate() {
         super.onCreate();
-
+        this.mContext = getApplicationContext();
+        try {
+            Context myContext = createPackageContext("np.com.nettv.launcher", MODE_PRIVATE);
+            SharedPreferences pref = myContext.getSharedPreferences("auth_pref", MODE_MULTI_PROCESS);
+            accessToken = pref.getString("key_result_refresh", "null");
+            Toast.makeText(this, accessToken, Toast.LENGTH_SHORT).show();
+            Log.d("CHeckingAcessToken", accessToken);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
         nettvApplicationComponent = DaggerNettvApplicationComponent.builder().
                 nettvApplicationModule(new NettvApplicationModule(this)).build();
 
@@ -38,7 +52,7 @@ public class NettvApp extends MultiDexApplication{
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
                 .connectTimeout(120, TimeUnit.SECONDS)
                 .readTimeout(120, TimeUnit.SECONDS)
-                . writeTimeout(120, TimeUnit.SECONDS)
+                .writeTimeout(120, TimeUnit.SECONDS)
                 .build();
 
         Parse.initialize(new Parse.Configuration.Builder(this)
@@ -48,11 +62,11 @@ public class NettvApp extends MultiDexApplication{
                 .build()
         );
 
-        AndroidNetworking.initialize(getApplicationContext(),okHttpClient);
+        AndroidNetworking.initialize(getApplicationContext(), okHttpClient);
         AndroidNetworking.enableLogging();
     }
 
-    public static void init(){
+    public static void init() {
 
     }
 
