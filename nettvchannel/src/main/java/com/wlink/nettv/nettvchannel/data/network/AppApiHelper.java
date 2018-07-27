@@ -49,7 +49,6 @@ public class AppApiHelper implements ApiHelper {
 
     @Override
     public Observable<NimbleToken> getNimbleToken() {
-        Log.d("ChckingToken",mApiHeader.getPublicApiHeader().getApiKey());
         return Rx2AndroidNetworking.get(ApiEndPoints.NIMBLE)
                 .addHeaders("Authorization",mApiHeader.getProtectedApiHeader().getAccessToken())
                 .build()

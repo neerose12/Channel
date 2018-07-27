@@ -33,6 +33,22 @@ public class ChannelCategory extends ChannelModelResponse{
         return logo;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public void setChannelModels(List<ChannelModel> channelModels) {
+        this.channelModels = channelModels;
+    }
+
     @Override
     public int hashCode() {
         return id;
