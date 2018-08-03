@@ -62,6 +62,7 @@ public class NettvApp extends MultiDexApplication {
                 .build();
 
         Parse.enableLocalDatastore(this);
+        Parse.initialize(this);
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("t0U9u01szKbK9OZh")
                 .clientKey("69717fcd03b42bd9a38b0f2c8694728e4d7870ed")
